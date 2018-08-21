@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Videos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aa0-00-TBT" customClass="PlayerView" customModule="Videos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="313.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YY-Ls-Cb0">
+                                        <rect key="frame" x="162.5" y="132" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="V4e-fo-Wha"/>
+                                            <constraint firstAttribute="width" constant="50" id="i37-to-Tdv"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="btnAddVideoPressed:" destination="aa0-00-TBT" eventType="touchUpInside" id="MzY-xB-G9c"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9YY-Ls-Cb0" firstAttribute="centerY" secondItem="aa0-00-TBT" secondAttribute="centerY" id="6IT-dc-aLG"/>
+                                    <constraint firstItem="9YY-Ls-Cb0" firstAttribute="centerX" secondItem="aa0-00-TBT" secondAttribute="centerX" id="vJM-fH-dgZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE7-K1-RkC" customClass="PlayerView" customModule="Videos" customModuleProvider="target">
+                                <rect key="frame" x="50" y="383.5" width="275" height="163.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIh-rF-Lma">
+                                        <rect key="frame" x="112.5" y="57" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="7A0-Gh-ujk"/>
+                                            <constraint firstAttribute="height" constant="50" id="hrn-N9-PPF"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="btnAddVideoPressed:" destination="OE7-K1-RkC" eventType="touchUpInside" id="lGF-Z7-kdz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="aIh-rF-Lma" firstAttribute="centerX" secondItem="OE7-K1-RkC" secondAttribute="centerX" id="Qji-rB-g3c"/>
+                                    <constraint firstItem="aIh-rF-Lma" firstAttribute="centerY" secondItem="OE7-K1-RkC" secondAttribute="centerY" id="yAK-2U-oOf"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3u-Zq-rNA">
+                                <rect key="frame" x="170.5" y="597" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LGb-pe-XLV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="n3u-Zq-rNA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4BF-FW-ctU"/>
+                            <constraint firstItem="n3u-Zq-rNA" firstAttribute="top" secondItem="OE7-K1-RkC" secondAttribute="bottom" constant="50" id="7S9-QA-OTj"/>
+                            <constraint firstItem="OE7-K1-RkC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="7q4-3w-CZP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="n3u-Zq-rNA" secondAttribute="bottom" constant="40" id="8pT-UD-0NC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aa0-00-TBT" secondAttribute="trailing" id="FhF-xZ-VBo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OE7-K1-RkC" secondAttribute="trailing" constant="50" id="MaC-at-yqm"/>
+                            <constraint firstItem="aa0-00-TBT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Pn0-NR-VLr"/>
+                            <constraint firstItem="aa0-00-TBT" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="e3C-Iq-lro"/>
+                            <constraint firstItem="aa0-00-TBT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fSZ-SV-MLc"/>
+                            <constraint firstItem="OE7-K1-RkC" firstAttribute="top" secondItem="aa0-00-TBT" secondAttribute="bottom" constant="50" id="zgO-HD-QAT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="firstPlayer" destination="aa0-00-TBT" id="MQv-ys-gnr"/>
+                        <outlet property="secondPlayer" destination="OE7-K1-RkC" id="fcK-eQ-er4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
+        </scene>
+    </scenes>
+</document>
