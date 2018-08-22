@@ -31,7 +31,6 @@ class ViewController: UIViewController{
     //MARK: - IBAction
     @IBAction func saveButtonTap(_ sender: Any) {
         guard let firstAsset = firstPlayer.avurlAsset, let secondAsset = secondPlayer.avurlAsset else { return }
-//        overlay(video: firstAsset, withSecondVideo: secondAsset, andAlpha: 1.0)
         overlapVideos(firstAsset: firstAsset, withSecondVideo: secondAsset)
             }
     
@@ -52,24 +51,29 @@ class ViewController: UIViewController{
             print(error)
         }
         
-        let duration = firstAsset.duration
+        let duration = max(firstAsset.duration, secondAsset.duration)
+        
+        let screenSize = UIScreen.main.bounds.size
         
         let mainInstruction = AVMutableVideoCompositionInstruction()
         mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, duration)
+        mainInstruction.backgroundColor = UIColor.white.cgColor
+
         
         let firstLayerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: firstTrack!)
-        let scale1 = CGAffineTransform(scaleX: 1.0, y: 0.5)
+        let scale1 = CGAffineTransform(scaleX: screenSize.width / firstMediaTrack.naturalSize.width,
+                                       y: (screenSize.height * 0.5) / firstMediaTrack.naturalSize.height )
         
         firstLayerInstruction.setTransform(scale1, at: kCMTimeZero)
         firstLayerInstruction.setOpacity(1.0, at: kCMTimeZero)
-        
         
         let width = max(firstMediaTrack.naturalSize.width, secondMediaTrack.naturalSize.width)
         let height = max(firstMediaTrack.naturalSize.height, secondMediaTrack.naturalSize.height)
         
         let secondlayerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: secondTrack!)
-        let scale2 = CGAffineTransform(scaleX: 1.0, y: 0.5)
-        let move = CGAffineTransform(translationX: 0, y: height * 0.5)
+        let scale2 = CGAffineTransform(scaleX: (screenSize.width * 0.5) / secondMediaTrack.naturalSize.width,
+                                       y: (screenSize.height * 0.4) / secondMediaTrack.naturalSize.height )
+        let move = CGAffineTransform(translationX: screenSize.width * 0.25, y: screenSize.height * 0.55)
         secondlayerInstruction.setTransform(scale2.concatenating(move), at: kCMTimeZero)
         secondlayerInstruction.setOpacity(1.0, at: kCMTimeZero)
         
@@ -77,8 +81,9 @@ class ViewController: UIViewController{
         
         let videoComposition = AVMutableVideoComposition()
         videoComposition.instructions = [mainInstruction]
-        videoComposition.renderSize = CGSize(width: width, height: height)
+        videoComposition.renderSize = screenSize
         videoComposition.frameDuration = CMTimeMake(1, 30)
+        
         
         guard let exporter = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality),
             exporter.supportedFileTypes.contains(AVFileType.mp4) else { return }
@@ -117,6 +122,7 @@ class ViewController: UIViewController{
 
     }
     
+
 
 
 }
